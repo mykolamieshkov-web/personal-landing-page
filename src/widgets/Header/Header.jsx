@@ -8,7 +8,7 @@ const Header = ( ) => { // вызов функции
          <div className="header__container">
                <div className="header__navigation">
                  <div className="header__logo">
-                       <h1>hello world!</h1>
+                       <h1>hello this is Myk's portfolio!</h1>
                  </div>
                  </div>
          </div>
