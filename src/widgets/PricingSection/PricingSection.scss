@@ -1,0 +1,262 @@
+@use 'sass:color';
+
+// ─── Tokens ───────────────────────────────────────────
+$bg:               #0F0F0F;
+$bg-card:          #161616;
+$bg-card-featured: #1A1A1A;
+$border:           rgba(255, 255, 255, 0.07);
+$border-featured:  rgba(255, 255, 255, 0.15);
+$text-primary:     #F2F2F2;
+$text-secondary:   #888888;
+$text-muted:       #555555;
+$accent:           #E8FF47;
+$accent-dim:       rgba(232, 255, 71, 0.08);
+$accent-border:    rgba(232, 255, 71, 0.2);
+$radius:           16px;
+$radius-sm:        8px;
+
+// ─── Fonts ────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+// ─── Section ──────────────────────────────────────────
+.pricing {
+  background: $bg;
+  padding: 5rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  color: $text-primary;
+
+  &__inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  // ─── Header ─────────────────────────────────────────
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $accent;
+    margin: 0 0 1.25rem;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: $accent;
+    }
+  }
+
+  &__title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: $text-primary;
+    margin: 0 0 0.75rem;
+  }
+
+  &__subtitle {
+    font-size: 15px;
+    color: $text-secondary;
+    line-height: 1.6;
+    max-width: 480px;
+    font-weight: 300;
+    margin: 0 0 2.5rem;
+  }
+
+  // ─── Grid ────────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: $border;
+    border-radius: $radius;
+    overflow: hidden;
+    border: 1px solid $border;
+  }
+
+  // ─── Trust bar ───────────────────────────────────────
+  &__trust {
+    margin: 1.75rem 0 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  &__trust-item {
+    font-size: 12.5px;
+    color: $text-muted;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 300;
+
+    &::before {
+      content: '✓';
+      color: $accent;
+      font-size: 11px;
+    }
+  }
+}
+
+// ─── Card ─────────────────────────────────────────────
+.plan-card {
+  background: $bg-card;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+  transition: background 0.2s ease;
+
+  &:hover { background: #1c1c1c; }
+
+  &--featured {
+    background: $bg-card-featured;
+    outline: 1px solid $accent-border;
+    outline-offset: -1px;
+    z-index: 1;
+
+    &:hover { background: #1e1e1e; }
+
+    .plan-card__price        { color: $accent; }
+    .plan-card__check        { background: $accent-dim; border-color: $accent-border; }
+    .plan-card__check-icon   { stroke: $accent; }
+    .plan-card__cta          { background: $accent; border-color: $accent; color: #0F0F0F; font-weight: 600; }
+    .plan-card__cta:hover    { background: #f0ff6b; border-color: #f0ff6b; }
+  }
+
+  &__badge-placeholder {
+    height: 22px;
+    margin: 0 0 1.25rem;
+  }
+
+  &__badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0F0F0F;
+    background: $accent;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin: 0 0 1.25rem;
+    width: fit-content;
+  }
+
+  &__tier {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-secondary;
+    margin: 0 0 0.5rem;
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin: 0 0 0.25rem;
+  }
+
+  &__currency {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $text-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__price {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: $text-primary;
+    line-height: 1;
+  }
+
+  &__note {
+    font-size: 12px;
+    color: $text-muted;
+    margin: 0 0 1.75rem;
+    font-weight: 300;
+  }
+
+  &__divider {
+    height: 1px;
+    background: $border;
+    margin: 0 0 1.5rem;
+  }
+
+  &__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    margin: 0 0 2rem;
+    padding: 0;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: $text-secondary;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  &__check {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid $border-featured;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &__check-icon {
+    stroke: $text-muted;
+  }
+
+  &__cta {
+    display: block;
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: $radius-sm;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid $border;
+    background: transparent;
+    color: $text-secondary;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      color: $text-primary;
+      background: rgba(255, 255, 255, 0.03);
+    }
+  }
+}
