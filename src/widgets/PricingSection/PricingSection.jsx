@@ -4,7 +4,7 @@ const plans = [
   {
     name: "Starter",
     price: 360,
-    delivery: "Ready in 2 days",
+    delivery: "Ready in 5 days",
     featured: false,
     features: [
       "Your existing design, built and live online",
@@ -15,8 +15,8 @@ const plans = [
   },
   {
     name: "Growth",
-    price: 600,
-    delivery: "Ready in 3 days",
+    price: 599,
+    delivery: "Ready in 7 days",
     featured: true,
     features: [
       "A page designed to turn visitors into customers",
@@ -28,8 +28,8 @@ const plans = [
   },
   {
     name: "Full package",
-    price: 1000,
-    delivery: "Ready in 5 days",
+    price: 999,
+    delivery: "Ready in 10 days",
     featured: false,
     features: [
       "Everything in Growth",
@@ -99,7 +99,7 @@ const Card = ({ plan }) => {
         className="plan-card__cta"
         aria-label={`Get started with ${name} package`}
       >
-        Let's talk
+        Let's proceed
       </a>
     </div>
   );

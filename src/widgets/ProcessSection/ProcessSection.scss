@@ -1,0 +1,348 @@
+// ─── Palette ────────────────────────────────────────────────────────────────
+$bg:               #0F0F0F;
+$bg-card:          #161616;
+$bg-card-featured: #1A1A1A;
+$border:           #E8FF47;
+$border-featured:  rgba(255, 255, 255, 0.15);
+$text-primary:     #F2F2F2;
+$text-secondary:   #f2f2f2;
+$text-muted:       #F8d299;
+$accent:           #E8FF47;
+$accent-dim:       rgba(232, 255, 71, 0.08);
+$accent-border:    rgba(232, 255, 71, 0.2);
+$radius:           16px;
+$radius-sm:        8px;
+
+// ─── Typography ─────────────────────────────────────────────────────────────
+// Pair: DM Serif Display (editorial punch) + DM Sans (clean body)
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+// ─── Mixins ─────────────────────────────────────────────────────────────────
+@mixin transition($props: all, $dur: 0.22s, $ease: cubic-bezier(0.4, 0, 0.2, 1)) {
+  transition: $props $dur $ease;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 3px;
+  }
+}
+
+// ─── Section ────────────────────────────────────────────────────────────────
+.process-section {
+  background: $bg;
+  padding: 96px 24px;
+  font-family: 'DM Sans', sans-serif;
+  color: $text-primary;
+
+  // Entrance animation
+  opacity: 0;
+  transform: translateY(24px);
+  @include transition(opacity 0.6s, transform 0.6s);
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  // ─── Header ─────────────────────────────────────────────────────────────
+  &__header {
+    margin-bottom: 56px;
+  }
+
+  &__eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $accent;
+    margin: 0 0 16px;
+  }
+
+  &__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: $text-primary;
+    margin: 0 0 16px;
+  }
+
+  &__heading-accent {
+    font-style: italic;
+    color: $accent;
+  }
+
+  &__subheading {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba($text-secondary, 0.55);
+    margin: 0;
+    max-width: 480px;
+  }
+
+  // ─── Timeline track ─────────────────────────────────────────────────────
+  &__track {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  &__line {
+    flex-shrink: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-top: 28px;
+    // Height = cards total height; JS controls fill
+    align-self: stretch;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $accent;
+    @include transition(height, 0.4s, cubic-bezier(0.4, 0, 0.2, 1));
+    box-shadow: 0 0 8px rgba($accent, 0.4);
+  }
+
+  &__steps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  // ─── Footer ─────────────────────────────────────────────────────────────
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__footer-note {
+    font-size: 14px;
+    color: rgba($text-secondary, 0.4);
+    margin: 0;
+
+    &::before {
+      content: '⌀ ';
+      color: $text-muted;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: $accent;
+    color: #0a0a0a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: $radius-sm;
+    border: none;
+    cursor: pointer;
+    @include transition(opacity);
+    @include focus-ring;
+
+    svg {
+      @include transition(transform);
+    }
+
+    &:hover {
+      opacity: 0.88;
+
+      svg {
+        transform: translateX(3px);
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// ─── Step Card ──────────────────────────────────────────────────────────────
+.step-card {
+  background: $bg-card;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: $radius;
+  padding: 20px 22px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  @include transition(border-color background);
+  @include focus-ring;
+
+  // Left accent bar
+  &__indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $accent;
+    border-radius: 0 1px 1px 0;
+    opacity: 0;
+    transform: scaleY(0.4);
+    @include transition(opacity transform);
+  }
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: $bg-card-featured;
+  }
+
+  &--active {
+    border-color: $accent-border;
+    background: $bg-card-featured;
+
+    .step-card__indicator {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    .step-card__number {
+      color: $accent;
+    }
+  }
+
+  // ─── Header row ───────────────────────────────────────────────────────
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  &__number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: rgba($text-secondary, 0.25);
+    @include transition(color);
+  }
+
+  &__duration {
+    font-size: 11px;
+    font-weight: 400;
+    color: $text-muted;
+    background: rgba($text-muted, 0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  // ─── Body ─────────────────────────────────────────────────────────────
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__icon {
+    color: rgba($text-secondary, 0.3);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    @include transition(color);
+
+    .step-card--active & {
+      color: $accent;
+    }
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 400;
+    color: $text-primary;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  // ─── Expandable details ───────────────────────────────────────────────
+  &__details {
+    display: grid;
+    grid-template-rows: 0fr;
+    @include transition(grid-template-rows, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));
+    overflow: hidden;
+
+    // Inner wrapper needed for grid-template-rows animation
+    & > * {
+      overflow: hidden;
+    }
+
+    &--visible {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba($text-secondary, 0.55);
+    margin: 0 0 14px;
+    padding-top: 2px;
+  }
+
+  &__deliverable {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $accent;
+    background: $accent-dim;
+    border: 1px solid $accent-border;
+    padding: 5px 12px;
+    border-radius: $radius-sm;
+    width: fit-content;
+    letter-spacing: 0.01em;
+    margin-bottom: 2px;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+}
+
+// ─── Reduced motion ─────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .process-section,
+  .step-card,
+  .step-card__indicator,
+  .process-section__line-fill {
+    transition: none;
+    animation: none;
+  }
+
+  .process-section {
+    opacity: 1;
+    transform: none;
+  }
+}

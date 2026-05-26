@@ -3,6 +3,7 @@
   import HeroSection from './widgets/HeroSection/';
   import Footer from './widgets/Footer/';
   import PricingSection from './widgets/PricingSection';
+  import ProcessSection from './widgets/ProcessSection';
 
   function App() {
     return (
@@ -12,6 +13,7 @@
 
         <main className="main-content">
           <HeroSection />
+          <ProcessSection/>
       <PricingSection/>
 
 
