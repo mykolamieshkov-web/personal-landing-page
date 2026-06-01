@@ -1,0 +1,13 @@
+@use '../palette' as *;
+
+.hero-section {
+  background: $bg;
+  color: $body-copy;
+  padding: 4rem 1.5rem;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+}

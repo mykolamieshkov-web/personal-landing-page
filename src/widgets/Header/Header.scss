@@ -1,0 +1,23 @@
+@use '../palette' as *;
+@use '../../assets/styles/mixins/media' as media;
+
+.header {
+  background: $bg;
+  color: $body-copy;
+  border-bottom: 1px solid $surface-border-subtle;
+
+  &__container {
+    padding-block: 1rem;
+  }
+
+  &__logo h1 {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
+    color: $body-copy;
+    margin: 0;
+
+    @include media.hover {
+      color: $hover;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+// Widget tokens — sourced from src/assets/styles/_root.scss CSS variables
+
+$bg: var(--primary-color);
+$bg-card: color-mix(in srgb, var(--secondary-color) 5%, var(--primary-color));
+$bg-card-featured: color-mix(in srgb, var(--secondary-color) 8%, var(--primary-color));
+$bg-card-hover: color-mix(in srgb, var(--secondary-color) 10%, var(--primary-color));
+$border: var(--accent-color);
+$border-featured: color-mix(in srgb, var(--secondary-color) 15%, transparent);
+$text-primary: var(--secondary-color);
+$text-secondary: var(--secondary-color);
+$body-copy: var(--secondary-color);
+$text-muted: var(--accent-color);
+$accent: var(--accent-color);
+$hover: var(--hover-color);
+$hover-glow: color-mix(in srgb, var(--hover-color) 45%, transparent);
+$decoration: var(--decoration-color);
+$on-accent: var(--primary-color);
+$accent-dim: color-mix(in srgb, var(--accent-color) 12%, transparent);
+$accent-border: color-mix(in srgb, var(--accent-color) 35%, transparent);
+$accent-glow: color-mix(in srgb, var(--accent-color) 40%, transparent);
+$surface-border: color-mix(in srgb, var(--secondary-color) 8%, transparent);
+$surface-border-subtle: color-mix(in srgb, var(--secondary-color) 6%, transparent);
+$surface-border-hover: color-mix(in srgb, var(--secondary-color) 10%, transparent);
+$text-faded: color-mix(in srgb, var(--secondary-color) 55%, transparent);
+$text-subtle: color-mix(in srgb, var(--secondary-color) 40%, transparent);
+$text-ghost: color-mix(in srgb, var(--secondary-color) 25%, transparent);
+$text-dim: color-mix(in srgb, var(--secondary-color) 30%, transparent);
+$muted-bg: color-mix(in srgb, var(--accent-color) 8%, transparent);
+$surface-hover: color-mix(in srgb, var(--secondary-color) 3%, transparent);

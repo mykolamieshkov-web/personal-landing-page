@@ -1,0 +1,12 @@
+@use '../palette' as *;
+
+.footer {
+  background: $bg;
+  color: $body-copy;
+  border-top: 1px solid $surface-border-subtle;
+
+  &__container {
+    padding-block: 2rem;
+    font-size: 0.875rem;
+  }
+}

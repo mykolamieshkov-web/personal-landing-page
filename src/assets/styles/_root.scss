@@ -3,10 +3,14 @@
     // переменная ширины ограничивающего контейнера
     --container-max-width: 1200px;
   // color-palette:
-//   --primary-color:#FFFFFF ;
-//   --secondary-color:rgba(18, 18, 18, 0.4);
-//   --accent-color:#FF6428 ;
-//   --hover-color:#ff6528d3;
+  --primary-color:#132228;
+  --secondary-color: #f5eed2;
+  --accent-color:#589c80 ;
+  --hover-color:#15e68f ;
+  --decoration-color: #EBAE29;
+}
 
-
+body {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
