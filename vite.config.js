@@ -12,8 +12,10 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // ОБЪЕДИНЯЕМ ВСЕ ИМПОРТЫ В ОДНУ СТРОКУ
-        // Важно: в конце каждой строки должна быть точка с запятой!
+           additionalData: `
+          @use "${path.resolve(__dirname, 'src/assets/styles/mixins/_mixins.scss')}" as *;
+          @use "${path.resolve(__dirname, 'src/assets/styles/mixins/_media.scss')}" as media;
+        `
 
       }
     }

@@ -1,11 +1,12 @@
 @use '../palette' as *;
-@use '../../assets/styles/mixins/media' as media;
 
 $radius:          16px;
+$bg: var(--primary-color);
 $radius-sm:       8px;
 $plan-card-width:   300px;
 $expand-duration:   0.8s;
 $expand-ease:       cubic-bezier(0.33, 1, 0.68, 1);
+
 
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
@@ -99,13 +100,14 @@ $expand-ease:       cubic-bezier(0.33, 1, 0.68, 1);
   }
 
   &__grid {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    width: 100%;
-  }
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+  width: 100%;
+}
+
 
   &__trust {
     margin: 1.5rem 0 0;
@@ -133,28 +135,22 @@ $expand-ease:       cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .plan-card {
-  position: relative;
+position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  width: 100%;
-  max-width: $plan-card-width;
-  box-sizing: border-box;
   padding: 1.25rem 1rem;
   background: $bg-card;
   border: 1px solid $border;
   border-radius: $radius;
   transition: background 0.25s ease;
 
+  // Remove width constraints – grid handles it
+  // max-width: none; (inherits from grid column)
+
   @include media.tablet-b {
-    flex: 0 0 $plan-card-width;
-    width: $plan-card-width;
     padding: 1.5rem 1.25rem;
     gap: 1rem;
-  }
-
-  @include media.hover {
-    background: $bg-card-hover;
   }
 
   &--featured {
@@ -183,10 +179,10 @@ $expand-ease:       cubic-bezier(0.33, 1, 0.68, 1);
   }
 
   &__badge-row {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    min-height: 1.25rem;
+   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 1.75rem; // consistent height even without badge
   }
 
   &__badge {
